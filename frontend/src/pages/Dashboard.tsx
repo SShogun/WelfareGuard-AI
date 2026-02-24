@@ -111,31 +111,31 @@ const Dashboard = () => {
     };
 
     return (
-        <div className="min-h-screen pt-24 px-6 max-w-7xl mx-auto">
+        <div className="min-h-screen pt-24 px-6 max-w-7xl mx-auto text-slate-200">
             <div className="flex justify-between items-center mb-8">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-slate-900">Satark Live Feed</h1>
-                    <p className="text-slate-600 mt-1 font-medium">Monitoring realtime network anomalies.</p>
+                    <h1 className="text-4xl font-['Playfair_Display'] font-black tracking-tight text-white mb-2">Satark Live Feed</h1>
+                    <p className="text-orange-500 font-mono tracking-widest text-sm uppercase">Monitoring realtime network anomalies.</p>
                 </div>
 
                 <div className="flex items-center space-x-4">
                     <div className="bg-slate-200 p-1 rounded-lg flex space-x-1">
-                        <button onClick={() => setViewMode('list')} className={`px-4 py-2 flex items-center rounded-md font-bold text-sm transition-all ${viewMode === 'list' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>
+                        <button onClick={() => setViewMode('list')} className={`px-4 py-2 flex items-center rounded-md font-bold text-sm transition-all ${viewMode === 'list' ? 'bg-orange-500 text-white shadow-[0_0_15px_rgba(249,115,22,0.5)]' : 'text-slate-400 hover:text-white'}`}>
                             <List className="w-4 h-4 mr-2" /> Live Feed
                         </button>
-                        <button onClick={() => setViewMode('analytics')} className={`px-4 py-2 flex items-center rounded-md font-bold text-sm transition-all ${viewMode === 'analytics' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>
+                        <button onClick={() => setViewMode('analytics')} className={`px-4 py-2 flex items-center rounded-md font-bold text-sm transition-all ${viewMode === 'analytics' ? 'bg-orange-500 text-white shadow-[0_0_15px_rgba(249,115,22,0.5)]' : 'text-slate-400 hover:text-white'}`}>
                             <BarChart2 className="w-4 h-4 mr-2" /> Threat Analytics
                         </button>
                     </div>
 
                     <div className="glass-panel px-4 py-2 flex items-center space-x-2">
-                        <Search className="w-4 h-4 text-slate-500" />
+                        <Search className="w-4 h-4 text-orange-500" />
                         <input
                             type="text"
                             placeholder="Search Citizen ID..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className="bg-transparent border-none outline-none text-sm text-slate-900 font-medium placeholder-slate-500 w-48"
+                            className="bg-transparent border-none outline-none text-sm text-white font-medium placeholder-slate-500 w-48"
                         />
                     </div>
                 </div>
@@ -144,20 +144,20 @@ const Dashboard = () => {
             {stats && (
                 <div className="grid grid-cols-4 gap-6 mb-8">
                     <div className="glass-panel p-6 flex flex-col justify-center">
-                        <p className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">Network Scans</p>
-                        <h3 className="text-3xl font-black text-slate-900">{stats.total_applications}</h3>
+                        <p className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Network Scans</p>
+                        <h3 className="text-3xl font-black text-white">{stats.total_applications}</h3>
                     </div>
-                    <div className="glass-panel p-6 flex flex-col justify-center border-b-4 border-green-500">
-                        <p className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">Verified Clean</p>
-                        <h3 className="text-3xl font-black text-green-600">{stats.real_applications}</h3>
+                    <div className="glass-panel p-6 flex flex-col justify-center border-b-4 border-green-500/50">
+                        <p className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Verified Clean</p>
+                        <h3 className="text-3xl font-black text-green-400">{stats.real_applications}</h3>
                     </div>
-                    <div className="glass-panel p-6 flex flex-col justify-center border-b-4 border-red-500">
-                        <p className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">Anomalous Clusters Blocked</p>
-                        <h3 className="text-3xl font-black text-red-600">{stats.fake_applications}</h3>
+                    <div className="glass-panel p-6 flex flex-col justify-center border-b-4 border-red-500/50">
+                        <p className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Anomalous Clusters Blocked</p>
+                        <h3 className="text-3xl font-black text-red-400">{stats.fake_applications}</h3>
                     </div>
-                    <div className="glass-panel p-6 flex flex-col justify-center bg-slate-900 border-none">
+                    <div className="glass-panel p-6 flex flex-col justify-center border-b-4 border-orange-500/50">
                         <p className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Capital Preserved (INR)</p>
-                        <h3 className="text-3xl font-black text-emerald-400">₹{stats.funds_saved.toLocaleString()}</h3>
+                        <h3 className="text-3xl font-black text-orange-400">₹{stats.funds_saved.toLocaleString()}</h3>
                     </div>
                 </div>
             )}
@@ -220,44 +220,44 @@ const Dashboard = () => {
                                                         <div className="p-4 bg-slate-100/50 rounded-lg">
                                                             <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">AI Engine Execution Trace</h4>
                                                             <div className="space-y-4">
-                                                                <div className="grid grid-cols-2 gap-4 bg-white/50 p-3 rounded-md border border-slate-200">
+                                                                <div className="grid grid-cols-2 gap-4 bg-white/5 p-3 rounded-md border border-white/10">
                                                                     {app.yearly_incomes && Object.keys(app.yearly_incomes).length > 0 && (
-                                                                        <div className="col-span-2 grid grid-cols-3 gap-2 mb-2 pb-2 border-b border-slate-200">
+                                                                        <div className="col-span-2 grid grid-cols-3 gap-2 mb-2 pb-2 border-b border-white/10">
                                                                             {Object.keys(app.yearly_incomes).sort().map(year => (
                                                                                 <div key={year}>
-                                                                                    <span className="text-xs text-slate-500 font-bold">{year} Income:</span><br />
-                                                                                    <span className="text-sm font-bold text-slate-900">₹{app.yearly_incomes![year].toLocaleString()}</span>
+                                                                                    <span className="text-xs text-slate-400 font-bold">{year} Income:</span><br />
+                                                                                    <span className="text-sm font-bold text-white">₹{app.yearly_incomes![year].toLocaleString()}</span>
                                                                                 </div>
                                                                             ))}
                                                                         </div>
                                                                     )}
                                                                     <div className="col-span-2">
-                                                                        <span className="text-xs text-slate-500 font-bold">Actual 3-Year Avg PAN Income:</span><br />
-                                                                        <span className={`text-sm font-bold ${app.calculated_pan_income > 250000 ? 'text-red-600' : 'text-slate-900'}`}>
+                                                                        <span className="text-xs text-slate-400 font-bold">Actual 3-Year Avg PAN Income:</span><br />
+                                                                        <span className={`text-sm font-bold ${app.calculated_pan_income > 250000 ? 'text-orange-500' : 'text-white'}`}>
                                                                             ₹{app.calculated_pan_income?.toLocaleString() || 'N/A'}
                                                                         </span>
                                                                     </div>
                                                                 </div>
 
                                                                 <div>
-                                                                    <span className="text-xs text-slate-500 font-bold">Rule Trigger / Flag Details:</span><br />
-                                                                    <span className="text-sm font-medium text-slate-900">{app.flag_reason || "Passed all heuristics"}</span>
+                                                                    <span className="text-xs text-slate-400 font-bold">Rule Trigger / Flag Details:</span><br />
+                                                                    <span className="text-sm font-medium text-slate-200">{app.flag_reason || "Passed all heuristics"}</span>
                                                                 </div>
 
                                                                 <div className="grid grid-cols-2 gap-4">
-                                                                    <div><span className="text-xs text-slate-500 font-bold">Analysis Trace Score:</span><br /><span className="text-sm font-mono text-slate-900 font-semibold">{app.fraud_score.toFixed(2)} Decision Integrity</span></div>
+                                                                    <div><span className="text-xs text-slate-400 font-bold">Analysis Trace Score:</span><br /><span className="text-sm font-mono text-white font-semibold">{app.fraud_score.toFixed(2)} Decision Integrity</span></div>
                                                                 </div>
                                                             </div>
                                                         </div>
 
                                                         <div className="flex space-x-3 mt-4">
-                                                            <button onClick={() => handleAction(app.id, 'approve')} className="px-5 py-2 bg-green-600 hover:bg-green-500 text-white rounded font-bold text-sm shadow-sm transition-colors cursor-pointer">
+                                                            <button onClick={() => handleAction(app.id, 'approve')} className="px-5 py-2 bg-green-600/80 hover:bg-green-500 text-white rounded font-bold text-sm shadow-sm transition-colors cursor-pointer border border-green-500/50">
                                                                 Approve
                                                             </button>
-                                                            <button onClick={() => handleAction(app.id, 'force_approve')} className="px-5 py-2 bg-orange-500 hover:bg-orange-400 text-white rounded font-bold text-sm shadow-sm transition-colors cursor-pointer">
+                                                            <button onClick={() => handleAction(app.id, 'force_approve')} className="px-5 py-2 bg-orange-600 hover:bg-orange-500 text-white rounded font-bold text-sm transition-all hover:shadow-[0_0_15px_rgba(249,115,22,0.5)] cursor-pointer border border-orange-500/50">
                                                                 Force Approve
                                                             </button>
-                                                            <button onClick={() => handleAction(app.id, 'flag_rbi')} className="px-5 py-2 bg-red-900 hover:bg-red-800 text-white rounded font-bold text-sm shadow-sm transition-colors cursor-pointer shadow-red-900/50">
+                                                            <button onClick={() => handleAction(app.id, 'flag_rbi')} className="px-5 py-2 bg-red-900 hover:bg-red-800 text-white rounded font-bold text-sm transition-colors cursor-pointer border border-red-500/50 shadow-[0_0_15px_rgba(220,38,38,0.2)]">
                                                                 Flag for RBI Investigation
                                                             </button>
                                                         </div>

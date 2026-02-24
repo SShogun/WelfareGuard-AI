@@ -11,7 +11,10 @@ import CitizenDashboard from './pages/CitizenDashboard.tsx';
 import Users from './pages/Users.tsx';
 import Login from './pages/Login.tsx';
 import Signup from './pages/Signup.tsx';
-import Footer from './components/Footer.tsx';
+import SatarkFooter from './components/SatarkFooter.tsx';
+import Preloader from './components/Preloader.tsx';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -33,13 +36,19 @@ const ProtectedRoute = ({ children, allowedRole }: ProtectedRouteProps) => {
   return <>{children}</>;
 };
 
-function App() {
+const AnimatedRoutes = () => {
+  const location = useLocation();
   return (
-    <Router>
-      <CustomCursor />
-      <NavigationBar />
-      <main className="pt-24 min-h-screen px-4 md:px-8">
-        <Routes>
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={location.pathname}
+        initial={{ opacity: 0, filter: 'blur(15px)', y: 20 }}
+        animate={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
+        exit={{ opacity: 0, filter: 'blur(15px)', y: -20 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+        className="min-h-screen"
+      >
+        <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
           <Route path="/threats" element={<Threats />} />
           <Route path="/pipeline" element={<Pipeline />} />
@@ -77,9 +86,24 @@ function App() {
             </ProtectedRoute>
           } />
         </Routes>
-      </main>
-      <Footer />
-    </Router>
+      </motion.div>
+    </AnimatePresence>
+  );
+};
+
+function App() {
+  return (
+    <>
+      <Preloader />
+      <Router>
+        <CustomCursor />
+        <NavigationBar />
+        <main className="pt-24 min-h-screen px-4 md:px-8">
+          <AnimatedRoutes />
+        </main>
+        <SatarkFooter />
+      </Router>
+    </>
   );
 }
 
