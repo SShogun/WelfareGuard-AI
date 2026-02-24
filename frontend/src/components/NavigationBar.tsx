@@ -53,32 +53,32 @@ const NavigationBar = () => {
 
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-xl border-b border-white/40 shadow-sm transition-all">
-            <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between">
                 {/* Logo */}
                 <div className="flex items-center space-x-1 border-none outline-none">
                     <Link to="/" className="flex items-center -ml-3">
-                        <img src="/logo.png" alt="Satark Logo" className="h-16 md:h-20 w-auto object-contain scale-110 origin-left" />
+                        <img src="/logo.png" alt="Satark Logo" className="h-12 md:h-14 w-auto object-contain scale-110 origin-left" />
                     </Link>
                 </div>
 
                 {/* Center Links */}
                 <div className="hidden md:flex space-x-8 items-center">
-                    <a href="/#problem" className="text-[#121212]/80 hover:text-[#006C67] font-bold transition">The Threat</a>
-                    <a href="/#solution" className="text-[#121212]/80 hover:text-[#006C67] font-bold transition">How it Works</a>
+                    <a href="/#problem" className="text-[#121212]/80 hover:text-[#E27C37] font-bold transition">The Threat</a>
+                    <a href="/#solution" className="text-[#121212]/80 hover:text-[#E27C37] font-bold transition">How it Works</a>
 
                     {role === 'admin' ? (
                         <>
-                            <Link to="/dashboard" className="text-[#121212]/80 hover:text-[#006C67] font-bold transition">Flags</Link>
-                            <Link to="/citizens" className="text-[#121212]/80 hover:text-[#006C67] font-bold transition">Registered Citizens</Link>
-                            <Link to="/analytics" className="text-[#121212]/80 hover:text-[#006C67] font-bold transition">Live Data</Link>
+                            <Link to="/dashboard" className="text-[#121212]/80 hover:text-[#E27C37] font-bold transition">Flags</Link>
+                            <Link to="/citizens" className="text-[#121212]/80 hover:text-[#E27C37] font-bold transition">Registered Citizens</Link>
+                            <Link to="/analytics" className="text-[#121212]/80 hover:text-[#E27C37] font-bold transition">Live Data</Link>
                         </>
                     ) : role === 'citizen' ? (
                         <>
-                            {!hasApplication && <Link to="/apply" className="text-[#121212]/80 hover:text-[#006C67] font-bold transition">Citizen Portal</Link>}
-                            <Link to="/status" className="text-[#121212]/80 hover:text-[#006C67] font-bold transition">My Application</Link>
+                            {!hasApplication && <Link to="/apply" className="text-[#121212]/80 hover:text-[#E27C37] font-bold transition">Citizen Portal</Link>}
+                            <Link to="/status" className="text-[#121212]/80 hover:text-[#E27C37] font-bold transition">My Application</Link>
                         </>
                     ) : (
-                        <a href="/analytics" className="text-[#121212]/80 hover:text-[#006C67] font-bold transition">Live Data</a>
+                        <a href="/analytics" className="text-[#121212]/80 hover:text-[#E27C37] font-bold transition">Live Data</a>
                     )}
                 </div>
 
@@ -86,7 +86,7 @@ const NavigationBar = () => {
                 <div className="hidden md:flex space-x-4 items-center">
                     {token ? (
                         <>
-                            <button onClick={handleLogout} className="px-5 py-2 text-[#121212]/80 bg-transparent hover:text-[#006C67] font-bold transition-colors">
+                            <button onClick={handleLogout} className="px-5 py-2 text-[#121212]/80 bg-transparent hover:text-[#E27C37] font-bold transition-colors">
                                 Logout
                             </button>
                             {role !== 'admin' && !hasApplication && (
@@ -97,7 +97,7 @@ const NavigationBar = () => {
                         </>
                     ) : (
                         <>
-                            <Link to="/login" className="px-5 py-2 text-[#121212]/80 bg-transparent hover:text-[#006C67] font-bold transition-colors">
+                            <Link to="/login" className="px-5 py-2 text-[#121212]/80 bg-transparent hover:text-[#E27C37] font-bold transition-colors">
                                 Admin Login
                             </Link>
                             <Link to="/apply" className="px-6 py-2.5 bg-[#006C67] text-white rounded-full hover:bg-[#005a56] shadow-md font-bold transition-all">

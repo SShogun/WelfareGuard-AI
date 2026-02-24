@@ -22,7 +22,7 @@ const Home = () => {
                     </p>
                     <Link
                         to="/apply"
-                        className="inline-flex px-10 py-5 bg-[#006C67] text-white rounded-full hover:bg-[#005a56] font-bold transition-all hover:scale-105 active:scale-95 items-center space-x-3 shadow-md hover:shadow-lg"
+                        className="inline-flex px-10 py-5 bg-[#E27C37] text-white rounded-full hover:bg-[#c96a2e] font-bold transition-all hover:scale-105 active:scale-95 items-center space-x-3 shadow-md hover:shadow-lg"
                     >
                         <span className="text-lg uppercase tracking-wider">Start Application</span>
                         <ArrowRight className="w-6 h-6" />
